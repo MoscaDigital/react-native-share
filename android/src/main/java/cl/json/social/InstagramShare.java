@@ -5,6 +5,7 @@ import android.content.Intent;
 import java.io.File;
 import android.os.Environment;
 import android.net.Uri;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableMap;
@@ -24,8 +25,14 @@ public class InstagramShare extends SingleShareIntent {
     @Override
     public void open(ReadableMap options) throws ActivityNotFoundException {
         super.open(options);
-        //  extra params here
-        this.openIntentChooser();
+
+        if(super.options !=null){
+            //  extra params here
+            this.openIntentChooser();
+        }else {
+            Toast.makeText(reactContext, "App não instalada", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
